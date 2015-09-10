@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -20,7 +21,9 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan(basePackageClasses = {
         name.zemon.david.dao.SpringMarker.class,
-        name.zemon.david.service.SpringMarker.class})
+        name.zemon.david.service.SpringMarker.class,
+        name.zemon.david.controller.SpringMarker.class})
+@EnableWebMvc
 public class MainConfig {
     @Bean
     public DataSource dataSource() {

@@ -10,6 +10,7 @@
     <properties>
         <spring.version>4.2.1.RELEASE</spring.version>
         <hibernate.version>4.3.10.Final</hibernate.version>
+        <jackson.version>2.6.1</jackson.version>
     </properties>
 
     <dependencies>
@@ -34,6 +35,11 @@
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
         <!-- Database -->
         <dependency>
@@ -45,6 +51,18 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.0.5</version>
+        </dependency>
+
+        <!-- Jackson JSON Conversion -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!-- Miscellaneous -->
@@ -68,4 +86,14 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.3.3.v20150827</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
