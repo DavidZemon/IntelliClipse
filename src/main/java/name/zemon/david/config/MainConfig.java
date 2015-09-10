@@ -1,7 +1,6 @@
-package name.zemon.david;
+package name.zemon.david.config;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-import name.zemon.david.dao.IDao;
 import name.zemon.david.pojo.Person;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
@@ -19,13 +18,10 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackageClasses = IDao.class)
+@ComponentScan(basePackageClasses = {
+        name.zemon.david.dao.SpringMarker.class,
+        name.zemon.david.service.SpringMarker.class})
 public class MainConfig {
-    @Bean
-    public Main main(final IDao dao) {
-        return new Main(dao);
-    }
-
     @Bean
     public DataSource dataSource() {
         MysqlDataSource dataSource = new MysqlDataSource();

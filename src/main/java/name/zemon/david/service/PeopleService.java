@@ -1,19 +1,22 @@
-package name.zemon.david;
+package name.zemon.david.service;
 
 import name.zemon.david.dao.IDao;
 import name.zemon.david.pojo.Person;
+import org.springframework.stereotype.Service;
 
+import javax.inject.Inject;
 import java.util.Collection;
 
-public class Main {
+/**
+ * Created by david on 9/9/15.
+ */
+@Service
+public class PeopleService {
     private final IDao dao;
 
-    public Main(IDao dao) {
+    @Inject
+    public PeopleService(IDao dao) {
         this.dao = dao;
-    }
-
-    public String run() {
-        return "Hello";
     }
 
     public Collection<Person> getPeople() {
