@@ -25,4 +25,9 @@ public class Dao implements IDao {
                 .createCriteria(Person.class)
                 .list();
     }
+
+    @Override
+    public void saveAll(Collection<Person> allPeople) {
+        allPeople.forEach(person -> this.sessionFactory.getCurrentSession().save(person));
+    }
 }

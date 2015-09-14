@@ -22,4 +22,8 @@ public class PeopleService {
     public Collection<Person> getPeople() {
         return this.dao.getPeople();
     }
+
+    public void saveAll(final Collection<Person> allPeople) {
+        this.dao.saveAll(allPeople);
+    }
 }

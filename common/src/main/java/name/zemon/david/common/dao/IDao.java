@@ -9,4 +9,6 @@ import java.util.Collection;
  */
 public interface IDao {
     Collection<Person> getPeople();
+
+    void saveAll(Collection<Person> allPeople);
 }
