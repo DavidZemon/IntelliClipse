@@ -23,6 +23,10 @@ public class PeopleService {
         return this.dao.getPeople();
     }
 
+    public Collection<Person> getAllDs() {
+        return this.dao.getPeopleWithFirstName("D%");
+    }
+
     public void saveAll(final Collection<Person> allPeople) {
         this.dao.saveAll(allPeople);
     }

@@ -27,6 +27,14 @@ public class Dao implements IDao {
     }
 
     @Override
+    public Collection<Person> getPeopleWithFirstName(final String firstName) {
+        return this.sessionFactory.getCurrentSession()
+                .createQuery("from Person where firstName like :firstName")
+                .setParameter("firstName", firstName)
+                .list();
+    }
+
+    @Override
     public void saveAll(Collection<Person> allPeople) {
         allPeople.forEach(person -> this.sessionFactory.getCurrentSession().save(person));
     }

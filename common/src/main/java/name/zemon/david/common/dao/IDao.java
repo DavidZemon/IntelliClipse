@@ -10,5 +10,7 @@ import java.util.Collection;
 public interface IDao {
     Collection<Person> getPeople();
 
+    Collection<Person> getPeopleWithFirstName(String firstName);
+
     void saveAll(Collection<Person> allPeople);
 }
