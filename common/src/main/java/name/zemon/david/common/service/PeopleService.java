@@ -30,4 +30,8 @@ public class PeopleService {
     public void saveAll(final Collection<Person> allPeople) {
         this.dao.saveAll(allPeople);
     }
+
+    public Person getById(final int id) {
+        return this.dao.getById(id);
+    }
 }

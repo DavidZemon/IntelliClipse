@@ -13,4 +13,6 @@ public interface IDao {
     Collection<Person> getPeopleWithFirstName(String firstName);
 
     void saveAll(Collection<Person> allPeople);
+
+    Person getById(int id);
 }

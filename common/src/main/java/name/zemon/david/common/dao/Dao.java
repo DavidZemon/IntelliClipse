@@ -38,4 +38,13 @@ public class Dao implements IDao {
     public void saveAll(Collection<Person> allPeople) {
         allPeople.forEach(person -> this.sessionFactory.getCurrentSession().save(person));
     }
+
+    @Override
+    public Person getById(int id) {
+        return (Person) this.sessionFactory.getCurrentSession()
+                .createSQLQuery("SELECT * FROM PEOPLE WHERE ID = :id")
+                .addEntity(Person.class)
+                .setParameter("id", id)
+                .uniqueResult();
+    }
 }
