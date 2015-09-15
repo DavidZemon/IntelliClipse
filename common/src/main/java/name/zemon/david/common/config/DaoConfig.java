@@ -7,10 +7,13 @@ import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -20,13 +23,17 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackageClasses = SpringMarker.class)
+@PropertySource("classpath:${environment}.properties")
 public class DaoConfig {
+    @Inject
+    private Environment env;
+
     @Bean
     public DataSource dataSource() {
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUrl("jdbc:mysql://david.zemon.name:3306/intelliclipse");
         dataSource.setUser("intelliclipse");
-        dataSource.setPassword("idea&eclipse");
+        dataSource.setPassword(this.env.getRequiredProperty("jdbc.password"));
         return dataSource;
     }
 
